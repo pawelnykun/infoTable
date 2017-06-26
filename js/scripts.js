@@ -65,6 +65,7 @@ $(function() {
 	prev.click(function() {
 		currentPageNumber--;
 		console.log(currentPageNumber);
+		$('.page').removeClass("active").eq(currentPageNumber-1).addClass("active");
 		checkCurrentPageNumber();
 		setOffset();
 		getData(offsetNumber);
@@ -73,6 +74,7 @@ $(function() {
 	next.click(function() {
 		currentPageNumber++;
 		console.log(currentPageNumber);
+		$('.page').removeClass("active").eq(currentPageNumber-1).addClass("active");
 		checkCurrentPageNumber();
 		setOffset();
 		getData(offsetNumber);
