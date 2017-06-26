@@ -52,3 +52,19 @@ header img {
 #details nav ul.pagination {
 	margin: 0 auto;
 }
+
+/* FOOTER */
+footer {
+	font-family: 'Open Sans', sans-serif;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background-color: #ED1C24;
+	color: #fff;
+	margin: 50px 0 0 0;
+}
+
+footer p {
+	margin: 0;
+	font-weight: bold;
+}
