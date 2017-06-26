@@ -78,6 +78,17 @@ $(function() {
 		getData(offsetNumber);
 	});
 
+	$('.page').click(function() {
+		if( !$(this).hasClass("active") ) {
+			currentPageNumber = $(this).index();
+			console.log(currentPageNumber);
+			$('.page').removeClass("active").eq(currentPageNumber-1).addClass("active");
+			checkCurrentPageNumber();
+			setOffset();
+			getData(offsetNumber);
+		}
+	})
+
 	//first getting data
 	getData();
 	checkCurrentPageNumber();
