@@ -1,7 +1,6 @@
 $(function() {
-	var url = 'https://pokeapi.co/';
-	var connect = 'api/v1/sprite/';
-	var hp = 'api/v1/pokemon/';
+	var url = 'https://pokeapi.co';
+	var connect = '/api/v1/sprite/';
 	var table = $('.table-responsive');
 	var currentHP = 0;
 
@@ -17,11 +16,13 @@ $(function() {
 		});
 	}
 
-	function getHP(name) {
+	function getHP(resource_uri, $itemHp) {
 		$.ajax({
-			url: url + hp + name + "/",
+			url: url + resource_uri,
 			method: 'GET',
-			success: showHP
+			success: function(resp) {
+                showHP(resp, $itemHp);
+            }
 		});
 	}
 
@@ -39,13 +40,12 @@ $(function() {
 				.append($itemHP);
 
 			$row.appendTo(tbody);
-			getHP(item.pokemon.name);
-			console.log('Current hp is:' + currentHP);
+			getHP(item.pokemon.resource_uri, $itemHP);
 		});
 	}
 
-	function showHP(resp) {
-		currentHP = resp.hp;
+	function showHP(resp, $itemHp) {
+        $itemHp.text(resp.hp);
 	}
 
 	getData();
