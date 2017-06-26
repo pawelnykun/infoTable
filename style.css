@@ -44,3 +44,11 @@ header img {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
 }
+
+#details nav {
+	text-align: center;
+}
+
+#details nav ul.pagination {
+	margin: 0 auto;
+}

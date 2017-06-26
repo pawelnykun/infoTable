@@ -3,14 +3,18 @@ $(function() {
 	var connect = '/api/v1/sprite/';
 	var table = $('.table-responsive');
 	var currentHP = 0;
+	var currentPageNumber = 1;
+	var prev = $('.prev');
+	var next = $('.next');
+	var offsetNumber;
 
-	function getData() {
+	function getData(offsetNumber) {
 		$.ajax({
 			url: url + connect,
 			method: 'GET',
 			data: {
 				limit: 10,
-				offset: 1
+				offset: offsetNumber || 1
 			},
 			success: showData
 		});
@@ -48,6 +52,34 @@ $(function() {
         $itemHp.text(resp.hp);
 	}
 
+	//pagening
+	function checkCurrentPageNumber() {
+		if (currentPageNumber > 1) prev.show();
+		else prev.hide();
+	}
+
+	function setOffset() {
+		offsetNumber = (currentPageNumber - 1) * 10 + 1;
+	}
+
+	prev.click(function() {
+		currentPageNumber--;
+		console.log(currentPageNumber);
+		checkCurrentPageNumber();
+		setOffset();
+		getData(offsetNumber);
+	});
+
+	next.click(function() {
+		currentPageNumber++;
+		console.log(currentPageNumber);
+		checkCurrentPageNumber();
+		setOffset();
+		getData(offsetNumber);
+	});
+
+	//first getting data
 	getData();
+	checkCurrentPageNumber();
 
 });
