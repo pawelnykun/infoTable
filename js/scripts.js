@@ -33,7 +33,7 @@ $(function() {
 		tbody.empty();
 		resp.objects.forEach(function(item) {
 			var $row = $('<tr>');
-			var $itemImage = $('<td><a href="pokemon.html?pokemonId=' + item.id + '"><img class="img-responsive" src="' + url + item.image + '" alt="pokemon">');
+			var $itemImage = $('<td><a href="pokemon.html?pokemonId=' + (item.id-1) + '"><img class="img-responsive" src="' + url + item.image + '" alt="pokemon">');
 			var $itemName = $('<td>').text(item.pokemon.name);
 			var $itemHP = $('<td>');
 
